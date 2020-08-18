@@ -4,32 +4,24 @@ import random
 import re
 import sys
 
-# Complete the icecreamParlor function below.
-def icecreamParlor(m, arr):
-        i, j = 0,0
-        for i in range(i, len(arr)+1):
-            for j in range(i+1, len(arr)):
-                if (arr[i] + arr[j] == m):
-                    s1 = str(i+1)
-                    s2 = str(j+1)
-                    s = s1 + " " + s2
-        return s
+# Complete the gemstones function below.
+def gemstones(arr):
+    gems = set.intersection(*map(set,arr))
+    return len(gems)
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')
 
-    t = int(input())
+    n = int(input())
 
-    for t_itr in range(t):
-        m = int(input())
+    arr = []
 
-        n = int(input())
+    for _ in range(n):
+        arr_item = input()
+        arr.append(arr_item)
 
-        arr = list(map(int, input().rstrip().split()))
+    result = gemstones(arr)
 
-        result = icecreamParlor(m, arr)
-
-        fptr.write(''.join(map(str, result)))#Nhớ xóa khoảng trắng dòng này để pass testcases trên HackerRank
-        fptr.write('\n')
+    fptr.write(str(result) + '\n')
 
     fptr.close()
